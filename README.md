@@ -86,7 +86,7 @@ This extension is built with:
 ### Local Development
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/hydrate-buddy.git
+git clone https://github.com/sumanth4690/Hydrate-buddy.git
 
 # Navigate to the directory
 cd hydrate-buddy
