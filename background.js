@@ -5,15 +5,13 @@ const STORAGE_KEYS = {
   START_TIME: 'startTime'
 };
 
-// Configuration
-const REMINDER_WINDOW_CONFIG = {
-  url: chrome.runtime.getURL("reminder.html"),
-  type: "popup",
-  width: 360,
-  height: 280,
-  top: 100,
-  left: 500,
-  focused: true
+// Notification configuration
+const NOTIFICATION_CONFIG = {
+  type: "basic",
+  iconUrl: "icon.png",
+  title: "HydrateBuddy",
+  message: "Time to drink water! 💧",
+  priority: 2
 };
 
 // Utility functions
@@ -34,11 +32,11 @@ function calculateTimeRemaining(startTime, intervalMinutes) {
 }
 
 // Core functionality
-function showCustomReminder() {
+function showNotification() {
   try {
-    chrome.windows.create(REMINDER_WINDOW_CONFIG);
+    chrome.notifications.create('hydration-reminder', NOTIFICATION_CONFIG);
   } catch (error) {
-    console.error('Failed to show reminder window:', error);
+    console.error('Failed to show notification:', error);
   }
 }
 
@@ -81,7 +79,7 @@ function clearTimerData() {
 
 // Timer management
 function handleTimerExpiration(interval) {
-  showCustomReminder();
+  showNotification();
   const newStart = Date.now();
   saveTimerData(interval, newStart);
   createAlarm(interval);
@@ -101,8 +99,10 @@ function initializeTimer() {
       // Timer should still be running, restart the alarm
       createAlarm(interval);
     } else {
-      // Timer has expired, show notification and restart
-      handleTimerExpiration(interval);
+      // Timer has expired, restart the alarm without showing notification on startup
+      const newStart = Date.now();
+      saveTimerData(interval, newStart);
+      createAlarm(interval);
     }
   });
 }
@@ -117,7 +117,7 @@ function handleMessage(message) {
       clearAlarm();
       break;
     case "notify":
-      showCustomReminder();
+      showNotification();
       break;
     default:
       console.warn('Unknown message action:', message.action);
@@ -129,7 +129,7 @@ chrome.runtime.onMessage.addListener(handleMessage);
 
 chrome.alarms.onAlarm.addListener((alarm) => {
   if (alarm.name === ALARM_NAME) {
-    showCustomReminder();
+    showNotification();
   }
 });
 
