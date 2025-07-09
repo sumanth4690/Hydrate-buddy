@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HydrateBuddy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>HydrateBuddy 💧</h1>
+    </header>
+
+    <section class="controls">
+      <label for="interval">Interval (minutes):</label>
+      <input 
+        type="number" 
+        id="interval" 
+        name="interval"
+        min="1" 
+        max="1440"
+        placeholder="Enter minutes"
+        aria-describedby="interval-help"
+      />
+      <small id="interval-help">Enter a number between 1 and 1440 (24 hours)</small>
+    </section>
+
+    <section class="button-group">
+      <button id="startBtn" type="button" aria-label="Start hydration timer">
+        Start
+      </button>
+      <button id="stopBtn" type="button" aria-label="Stop hydration timer">
+        Stop
+      </button>
+    </section>
+
+    <section class="timer-section">
+      <div class="timer-display" id="timerDisplay" role="status" aria-live="polite">
+        ⏱ Timer: --:--
+      </div>
+    </section>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>

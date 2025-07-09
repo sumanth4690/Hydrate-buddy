@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+  padding: 20px;
+  color: #333;
+}
+
+.container {
+  text-align: center;
+}
+
+input[type="number"] {
+  padding: 10px;
+  width: 80%;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+button {
+  background-color: #4fc3f7;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 10px;
+  font-size: 0.95em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #039be5;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.timer-display {
+  margin-top: 15px;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #4fc3f7;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Group buttons in a flex row */
+button + button {
+  margin-left: 8px;
+}
+
+.container button-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}

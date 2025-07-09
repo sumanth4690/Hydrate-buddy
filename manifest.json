@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "HydrateBuddy",
+  "version": "1.0",
+  "description": "Reminds you to drink water at regular intervals.",
+  "web_accessible_resources": [
+  {
+    "resources": ["reminder.html"],
+    "matches": ["<all_urls>"]
+  }
+],
+"permissions": ["notifications", "storage", "alarms", "windows"],
+"action": {
+  "default_popup": "popup.html",
+  "default_icon": "icon.png"
+},
+"background": {
+  "service_worker": "background.js"
+},
+"icons": {
+  "128": "icon.png"
+}
+}

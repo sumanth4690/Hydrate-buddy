@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hydration Reminder</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fff59d; /* Light yellow */
+      font-family: Arial, sans-serif;
+      color: #222;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .emoji {
+      font-size: 48px;
+      animation: pulse 1s infinite alternate;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="emoji">💧</div>
+  <div class="title">Time to Drink Water!</div>
+</body>
+</html>
